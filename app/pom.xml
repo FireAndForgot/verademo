@@ -12,7 +12,19 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    </properties>    <dependencyManagement>
+        <dependencies>
+            <!-- Pin org.apache.santuario:xmlsec to safe version: CVE-2013-4517, CVE-2013-2172, CVE-2013-5823, CVE-2021-40690, CVE-2023-44483 -->
+            <!-- Parent org.keycloak:keycloak-saml-core brings in vulnerable xmlsec 1.5.1 -->
+            <!-- Remove when keycloak-saml-core is upgraded to a version that includes a safe transitive -->
+            <dependency>
+                <groupId>org.apache.santuario</groupId>
+                <artifactId>xmlsec</artifactId>
+                <version>2.2.6</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <dependencies>
         <!-- Servlet API -->
@@ -27,17 +39,17 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>2.2.220</version>
         </dependency>
 		<dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-saml-core</artifactId>
-            <version>1.8.1.Final</version>
+            <version>26.6.2</version>
         </dependency>
 		<dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.0</version>
+            <version>4.1</version>
         </dependency>
     </dependencies>
 
