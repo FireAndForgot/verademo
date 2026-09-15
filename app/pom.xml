@@ -32,6 +32,14 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-core</artifactId>
 				<version>1.5.38</version>
+			</dependency>			<!-- Pin httpclient to 4.5.14 to fix CVE-2012-5783, CVE-2012-6153 -->
+			<!-- Library coordinate migration: commons-httpclient:commons-httpclient -> org.apache.httpcomponents:httpclient -->
+			<!-- Transitive dependency from older libraries in the project -->
+			<!-- Remove when parent dependencies are upgraded to versions that include safe transitives -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.5.14</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
