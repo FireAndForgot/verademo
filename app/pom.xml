@@ -20,7 +20,31 @@
 		<spring.version>4.3.10.RELEASE</spring.version>
 		<springboot.version>2.3.1.RELEASE</springboot.version>
 		<fileupload.version>1.3.2</fileupload.version>
-	</properties>
+	</properties>	<!-- Dependency Management to override transitive dependencies -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- Pin all Tomcat embedded artifacts to safe version 9.0.120 to address multiple CVEs -->
+			<!-- Pinning all Tomcat components together to avoid version mismatches -->
+			<!-- Parent spring-boot-starter-parent 2.3.1.RELEASE cannot be upgraded due to potential breaking changes -->
+			<!-- Remove when spring-boot-starter-parent is upgraded to a version that includes a safe transitive -->
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-core</artifactId>
+				<version>9.0.120</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-websocket</artifactId>
+				<version>9.0.120</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-el</artifactId>
+				<version>9.0.120</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 
 	<!-- Dependencies begin here -->
 	<dependencies>
