@@ -23,7 +23,12 @@
 	</properties>
 
 	<!-- Dependencies begin here -->
-	<dependencies>
+	<dependencies>		<!-- Pin transitive dependency org.apache.tomcat.embed:tomcat-embed-core for security update -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>9.0.118</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
